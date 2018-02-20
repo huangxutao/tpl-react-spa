@@ -1,5 +1,4 @@
-const path = require('path');
-const { resolveDir } = require('../tools/utils');
+const { resolvePath } = require('../tools/utils');
 
 module.exports = {
     entry: './src/app.jsx',
@@ -11,7 +10,7 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 loader: 'babel-loader',
-                include: [resolveDir('src')]
+                include: [resolvePath('src')]
             }
         ]
     }
