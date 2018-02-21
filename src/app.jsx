@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'mobx-react'
 import RouteConfig from './router';
+import stores from './store';
 
-class App extends React.Component {
-    render () {
-        return (
-            <div className="app-wrapper">
-                {RouteConfig}
-            </div>
-        );
-    }
+const App = () => {
+    return (
+        <Provider {...stores}>
+            {RouteConfig}
+        </Provider>
+    );
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
@@ -17,5 +17,3 @@ ReactDOM.render(<App />, document.getElementById('app'));
 if (module.hot) {
     module.hot.accept()
 }
-
-// export default App;

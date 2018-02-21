@@ -11,6 +11,12 @@ module.exports = webpackMerge(webpackBaseConfig, {
               { from: /.*/, to: '/index.html' },
             ],
         },
+        before: (app) => {
+            // mock data test
+            app.get('/a.json', function(req, res) {
+                res.json({ status: 'true', message: 'mock data' });
+            });
+        },
         hot: true,
         compress: true,
         port: 3000
