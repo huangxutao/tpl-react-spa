@@ -6,6 +6,11 @@ const webpackBaseConfig = require('./base.conf');
 module.exports = webpackMerge(webpackBaseConfig, {
     devtool: 'inline-source-map',
     devServer: {
+        historyApiFallback: {
+            rewrites: [
+              { from: /.*/, to: '/index.html' },
+            ],
+        },
         hot: true,
         compress: true,
         port: 3000

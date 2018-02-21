@@ -1,17 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import RouteConfig from './router';
 
 class App extends React.Component {
-    clickHandler = () => {
-        // console.log('click -->', this.h1);
-    }
-
     render () {
         return (
             <div className="app-wrapper">
-                <h1>
-                    A eact SPA Project.
-                </h1>
+                {RouteConfig}
             </div>
         );
     }
@@ -23,4 +18,4 @@ if (module.hot) {
     module.hot.accept()
 }
 
-export default App;
+// export default App;

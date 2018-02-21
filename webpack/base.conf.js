@@ -13,5 +13,8 @@ module.exports = {
                 include: [resolvePath('src')]
             }
         ]
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.json']
     }
 };
