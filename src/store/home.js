@@ -7,7 +7,7 @@ class HomeStore {
     }
 
     @action fetchData () {
-        Ajax.get('/a.json').then((res) => {
+        Ajax.get('/api/a.json').then((res) => {
             console.log('fetch data', res)
         })
     }
