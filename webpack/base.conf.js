@@ -1,9 +1,11 @@
-const { resolvePath } = require('../tools/utils');
+const { resolvePath, assetsPath } = require('../tools/utils');
 
 module.exports = {
     entry: './src/app.jsx',
     output: {
-        filename: './build/bundle.js'
+        path: resolvePath('build'),
+        filename: 'bundle.js',
+        publicPath: '',
     },
     module: {
         rules: [
@@ -11,7 +13,15 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 loader: 'babel-loader',
                 include: [resolvePath('src')]
-            }
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 1000,
+                    name: assetsPath('[name].[ext]')
+                }
+            },
         ]
     },
     resolve: {

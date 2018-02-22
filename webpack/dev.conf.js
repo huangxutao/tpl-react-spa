@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpackMerge = require('webpack-merge');
 const webpackBaseConfig = require('./base.conf');
+const { resolvePath, assetsPath } = require('../tools/utils');
 
 module.exports = webpackMerge(webpackBaseConfig, {
     devtool: 'inline-source-map',
@@ -11,12 +12,10 @@ module.exports = webpackMerge(webpackBaseConfig, {
               { from: /.*/, to: '/index.html' },
             ],
         },
-        before: (app) => {
-            // mock data test
-            app.get('/a.json', function(req, res) {
-                res.json({ status: 'true', message: 'mock data' });
-            });
+        proxy: {
+            "/api": "http://localhost:3001"
         },
+        publicPath: '/',
         hot: true,
         compress: true,
         port: 3000
@@ -29,5 +28,18 @@ module.exports = webpackMerge(webpackBaseConfig, {
             template: 'index.html',
             inject: true
         })
-    ]
+    ],
+    module: {
+        rules: [
+            { 
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    { loader: 'css-loader', options: { importLoaders: 1 , module: true, sourceMap: true } },
+                    'postcss-loader?sourceMap=true'
+                ],
+                include: [resolvePath('src'), resolvePath('test')]
+            },
+        ]
+    }
 });

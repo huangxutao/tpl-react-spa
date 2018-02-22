@@ -1,5 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react'
+import Style from './index.scss';
+import Logo from '../../assets/react.svg';
 
 @inject('homeStore') @observer
 class Home extends React.Component {
@@ -14,8 +16,9 @@ class Home extends React.Component {
 
     render () {
         return (
-            <div className="home-wrapper">
+            <div className={Style['home-wrapper']}>
                 <h1>Home</h1>
+                <img src={Logo} alt="logo"/>
             </div>
         );
     }

@@ -16,6 +16,12 @@ class Ajax {
         }, options);
 
         return fetch(url, options).then((res) => {
+            if (res.status === 404) {
+                return {
+                    status: false,
+                    message: `${url} >> response code 404, please check the api!`
+                }
+            }
             return res.json();
         }, (err) => {
             return {
