@@ -9,6 +9,7 @@ const RouteConfig = (
     <Router>
         <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/home" component={Home} />
             <Route path="/about" component={About} />
             <Route component={NotFound} />
         </Switch>
