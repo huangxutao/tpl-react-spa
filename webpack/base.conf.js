@@ -18,7 +18,7 @@ module.exports = {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 1000,
+                    limit: 10240,
                     name: assetsPath('[name].[ext]')
                 }
             },
